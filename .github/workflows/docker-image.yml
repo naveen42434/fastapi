@@ -35,6 +35,7 @@ jobs:
        kubectl get pod
        kubectl get services
        kubectl describe deployment myapp
+       minikube service list
 
     - name: Check Application Response
       run: |
