@@ -18,4 +18,4 @@ jobs:
       run: |
         docker build . --file Dockerfile --tag fastapi:latest
         docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
-        docker push fastapi:latest
+        docker push naveen42434/fastapi:latest
