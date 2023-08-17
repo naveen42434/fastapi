@@ -20,3 +20,14 @@ jobs:
         docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
         docker tag fastapi:latest ${{ secrets.DOCKERHUB_USERNAME }}/fastapi:latest
         docker push ${{ secrets.DOCKERHUB_USERNAME }}/fastapi:latest
+
+    - name: Start Minikube
+      run: |
+          minikube start
+          kubectl config use-context minikube
+
+    - name: Apply Kubernetes Deployment
+      run: kubectl apply -f deployment.yaml
+
+    - name: Verify Deployment
+      run: kubectl rollout status deployment/myapp
