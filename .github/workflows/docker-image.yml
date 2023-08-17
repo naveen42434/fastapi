@@ -30,7 +30,11 @@ jobs:
       run: kubectl apply -f deployment.yaml
 
     - name: Verify Deployment
-      run: kubectl rollout status deployment/myapp
+      run: |
+       kubectl rollout status deployment/myapp
+       kubectl get pod
+       kubectl get services
+       kubectl describe deployment myapp
 
     - name: Check Application Response
       run: |
