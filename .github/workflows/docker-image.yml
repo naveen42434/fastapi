@@ -27,16 +27,14 @@ jobs:
           kubectl config use-context minikube
 
     - name: Apply Kubernetes Deployment
-      run: kubectl apply -f deployment.yaml
+      run: |
+          kubectl apply -f deployment.yaml
+          kubectl apply -f service.yaml
 
     - name: Verify Deployment
       run: |
        kubectl rollout status deployment/myapp
-       kubectl get pod
-       kubectl get services
-       kubectl describe deployment myapp
-       minikube service list
 
     - name: Check Application Response
       run: |
-          minikube service kubernetes --url | xargs curl -s
+          minikube service myapp-service --url | xargs curl -s
