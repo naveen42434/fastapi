@@ -39,4 +39,4 @@ jobs:
 
     - name: Check Application Response
       run: |
-          minikube service myapp --url | xargs curl -s
+          minikube service kubernetes --url | xargs curl -s
