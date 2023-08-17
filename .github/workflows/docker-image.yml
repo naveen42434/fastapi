@@ -31,3 +31,7 @@ jobs:
 
     - name: Verify Deployment
       run: kubectl rollout status deployment/myapp
+
+    - name: Check Application Response
+      run: |
+          minikube service myapp --url | xargs curl -s
